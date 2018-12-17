@@ -39,7 +39,8 @@ Page({
     else {
       this.getNews(titleType)
       this.addMapResult(titleType)
-      // console.log(newsAll)
+      console.log(newsAll)
+      console.log('in dev')
     }
   },
 

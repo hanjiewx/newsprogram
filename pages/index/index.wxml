@@ -1,10 +1,12 @@
 <scroll-view scroll-x>
 <view class="title-wrapper">
-<view class="column-item" wx:for="{{columnTitle}}" bindtap='onTapTitle'>{{item}}</view>
+<view class="column-item" wx:for="{{columnTitle}}" >
+<view class="{{index==idx?'_left':'left'}}" data-index="{{index}}" bindtap='onTapTitle'>{{item}}</view>
+</view>
 </view>
 </scroll-view>
 
-<view class="hotNews-wrapper">
+<view class="hotNews-wrapper" bindtap='onTapDetails'>
 <image class="hotNewsPicture" src="{{picturePath}}"></image>
 <view class="hotNewsTitle">{{hotNewsText}}</view>
 <view class="sourceAndTime-wrapper">
@@ -15,7 +17,7 @@
 
 <scroll-view scroll-y>
 <view class="newsNow" wx:for="{{newsNow}}">
-<view class="newsNow-wrapper">
+<view class="newsNow-wrapper" bindtap='onTapDetails'>
 <view class="newsNowTitleSourceTime">
 <view class="newsNowTitle">{{item.newsText}}</view>
 <view class="nowSourceTime-wrapper">

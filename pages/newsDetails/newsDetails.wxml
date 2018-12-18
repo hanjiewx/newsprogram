@@ -1,0 +1,11 @@
+<view class="title">{{title}}</view>
+
+<view class="SourceTime-wrapper">
+<view class="Source">{{source}}</view>
+<view class="Time">{{time}}</view>
+</view>
+
+
+<view class="text-wrapper" wx:for="{{text}}">{{item}}</view>
+<view class="image-wrapper" wx:for="{{image}}"><image class="picture" src="{{item}}"></image></view>
+

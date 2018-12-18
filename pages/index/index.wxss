@@ -14,6 +14,18 @@
   font-size: 40rpx;
   line-height: 56rpx;
 }
+  ._left{
+  font:bold 40rpx;
+  color:black;
+  line-height: 56rpx;
+  border-bottom:  2px solid rgb(68, 64, 64)
+  }
+  .left{
+  font:bold 40rpx;
+  line-height: 56rpx;
+  color:grey
+  }
+
 .hotNews-wrapper{
   position:relative;
   width:720rpx;
@@ -30,14 +42,15 @@
   z-index: -1;
 }
 .hotNewsTitle{
+  padding-top:250rpx;
   margin-left:20rpx;
-  margin-bottom: 0rpx;
   font-size: 35rpx;
   line-height: 49rpx;
+  color:rgb(54, 169, 247)
 }
 .sourceAndTime-wrapper{
   display:flex;
-  margin-top: 270rpx;
+  margin-top: 10rpx;
   font-size: 25rpx;
   line-height: 35rpx;
   color:rgb(230, 211, 211);
@@ -68,6 +81,12 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 .newsNowTitleSourceTime{
   width:420rpx;
 }
+.newsNowSource{
+margin-left: 15rpx;
+}
+.newsNowTime{
+margin-left: 30rpx;
+}
 .newsNowTitle{
   margin-left:20rpx;
   font-size: 35rpx;
@@ -83,3 +102,4 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   line-height: 35rpx;
   color:brown;
   }
+

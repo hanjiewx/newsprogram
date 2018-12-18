@@ -7,152 +7,150 @@ const titleMap = {
   '体育': 'ty',
   '其他': 'other',
 }
-var newsAll = new Map([['gn',], ['gj',], ['cj',], ['yl',], ['js',], ['ty',], ['other',]])
-Page({
 
+
+Page({
   data: {
     columnTitle: ['国内', '国际', '财经', '娱乐', '军事', '体育', '其他'],
-    hotNewsText: "",
-    picturePath: "",
-    source: "",
-    time: "",
-    type: "",
-    newsText: "",
-    newsPicturePath: "",
-    newsSource: "",
-    newsTime: "",
-    newsNow: "",
-    news: {} 
-
+    news: {},
+    idx:0,
+    titleType: "",
+    result:[],
+    id:''
   },
+
   onLoad() {
-    this.getNews(titleMap['国内'])
+    let titleType = titleMap['国内']
+    this.getNews(titleMap['国内'],'')
+  },
+
+  onPullDownRefresh(){
+    this.getNews(this.data.titleType, () => { wx.stopPullDownRefresh() })
     
   },
 
   onTapTitle(e) {
     let titleType = titleMap[e._relatedInfo.anchorTargetText]
-    console.log(titleType)
-    if (newsAll.get(titleType)) {
-      this.getFromMap(titleType)
-    }
+    let index = e.currentTarget.dataset.index
+    if (this.data.news[titleType]) {
+        this.getFromNews(titleType)
+       }
     else {
-      this.getNews(titleType)
-      this.addMapResult(titleType)
-      console.log(newsAll)
-      console.log('in dev')
-    }
+        this.getNews(titleType)
+        }
+    
+    this.setData({
+      idx: index,
+      titleType:titleType,
+      
+    }) 
+   
   },
 
+  onTapDetails(e){
+     console.log(e)
+    for(let i=0;i<this.data.result.length;i++)
+    if (e._relatedInfo.anchorTargetText==this.data.result[i].title){
+      wx.setStorageSync('id', this.data.result[i].id)
+    }
+   
+     wx.navigateTo({
+    url: '/pages/newsDetails/newsDetails' 
+   })
+  },
 
-
-
-
-  getFromMap(titleType) {
-    console.log(titleType)
-    if (newsAll.get(titleType)) {
-      let id = newsAll.get(titleType)[0].id
-      let title = newsAll.get(titleType)[0].title
-      let source = newsAll.get(titleType)[0].source
-      let firstImage = newsAll.get(titleType)[0].firstImage
-      let time = newsAll.get(titleType)[0].date
+ 
+  getFromNews(titleType) {
+    let id = this.data.news[titleType][0].id
+    let title = this.data.news[titleType][0].title
+    let source = this.data.news[titleType][0].source
+    let firstImage = this.data.news[titleType][0].firstImage
+    let date = new Date(this.data.news[titleType][0].date).toJSON()
       this.setData({
+        id:id,
         hotNewsText: title,
         picturePath: firstImage,
         source: source,
-        time: time
+        time: new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
       })
 
-      //ordinary news
       let newsNow = []
-      for (let i = 1; i < newsAll.get(titleType).length; i++) {
+    for (let i = 1; i < this.data.news[titleType].length; i++) {
+          
         newsNow.push({
-          newsText: newsAll.get(titleType)[i].title,
-          newsPicturePath: newsAll.get(titleType)[i].firstImage,
-          newsSource: newsAll.get(titleType)[i].source,
-          newsTime: newsAll.get(titleType)[i].date
+          newsText: this.data.news[titleType][i].title,
+          newsPicturePath: this.data.news[titleType][i].firstImage,
+          newsSource: this.data.news[titleType][i].source,
+          newsTime: new Date(+ new Date(new Date(this.data.news[titleType][i].date).toJSON()) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
         })
       }
       this.setData({
         newsNow: newsNow
       })
 
-    }
+    
   },
 
-  addMapResult(type1) {
+ 
+  getNews(type,callback) {
     wx.request({
       url: 'https://test-miniprogram.com/api/news/list',
       data: {
-        type: type1
-      },
-      success: res => {
-        newsAll.set(type1, res.data.result)
-        this.setData({
-          newsAll: newsAll
-        })
-      }
-    })
-  },
-
-
-  getNews(type1) {
-    this.getHotNews(type1)
-    this.getOrdinaryNews(type1)
-  },
-  getHotNews(type1) {
-    wx.request({
-      url: 'https://test-miniprogram.com/api/news/list',
-      data: {
-        type: type1
+        type: type
       },
       success: res => {
         let result = res.data.result
         let id = result[0].id
-        let title = result[0].title
+        let hotNewsText = result[0].title
         let source = result[0].source
-        let firstImage = result[0].firstImage
-        let time = result[0].date
-        this.setData({
-          hotNewsText: title,
-          picturePath: firstImage,
-          source: source,
-          time: time
-        })
-      }
-    })
-  },
-
-  getOrdinaryNews(type1) {
-    wx.request({
-      url: 'https://test-miniprogram.com/api/news/list',
-      data: {
-        type: type1
-      },
-      success: res => {
-        let result = res.data.result
+        let picturePath = result[0].firstImage
+        let date = new Date(result[0].date).toJSON()
         let newsNow = []
         for (let i = 1; i < result.length; i++) {
+          
           newsNow.push({
+            id: result[i].id,
             newsText: result[i].title,
             newsPicturePath: result[i].firstImage,
             newsSource: result[i].source,
-            newsTime: result[i].date
+            newsTime: new Date(+ new Date(new Date(result[i].date).toJSON()) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
           })
         }
+
         this.setData({
+          id:id,
+          result:result,
+          hotNewsText: hotNewsText,
+          picturePath: picturePath,
+          source: source,
+          time: new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, ''),
           newsNow: newsNow
         })
-        this.data.news[type1] = result
-        console.log('news:', this.data.news)
+        console.log(result)
+        this.data.news[type] = result
+
+      },
+      
+      complete: () => {
+        callback && callback()
       }
     })
   },
 
 
- // myFunction(a){
-  //  var dateee = new Date(a).toJSON();
-    //var date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')  }
+
+
+
+
+
+
+   getTime(time, timeResult) {
+    let dateee = new Date(timeResult).toJSON();
+    this.setData({
+      time: new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+    })
+
+  }
 
 
 })

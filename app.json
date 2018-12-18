@@ -1,12 +1,14 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
+    "pages/logs/logs",
+    "pages/newsDetails/newsDetails"
+    ],
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#87ceeb",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   }
 }

@@ -1,8 +1,6 @@
 // pages/newsDetails/newsDetails.js
 Page({
-  data:{
-    textAndImage: []
-  },
+
  onLoad(){
    
   wx.request({
@@ -17,25 +15,34 @@ Page({
       let time = new Date(result.date).toJSON()
       let source=result.source
       let text=[]
-      let image=[]
+      let picturePath=[]
     
       //let textAndImage={}
-      for(let i=0,j=0;i<content.length;i++,j++){
+      for(let i=0,j=0,k=0;i<content.length;i++){
         
-        if (content[i].text) { text[j] = content[i].text}else {i++}
-        if (content[i].src) { image[j] = content[i].src}else{i++}
+        if (content[i].text) 
+        { text[j] = content[i].text
+          i++
+          j++   
         
-     }
+        }
+        else {
+          if (content[i].src) 
+          { picturePath[k] = content[i].src
+          k++ ;i++} 
+          else { i++ }
+        }
+        }
       
-       //console.log(text)
-       //console.log(picturePath)
+       console.log(text)
+       console.log(picturePath)
      
       this.setData({
         title:title,
         time: new Date(+new Date(time) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, ''),
         source:source,
         text:text,
-        image:image,
+        picturePath: picturePath,
         
       })
      // console.log(res)

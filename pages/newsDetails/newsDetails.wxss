@@ -1,1 +1,24 @@
-/* pages/newsDetails/newsDetails.wxss */
+.title{
+ font-size: 50rpx; 
+ line-height: 70rpx;
+ margin-top: 30rpx;
+ margin-left: 30rpx;
+ margin-right: 30rpx;
+}
+.SourceTime-wrapper{
+ margin-left: 30rpx;
+ font-size: 25rpx;
+ line-height: 35rpx; 
+}
+.Time{
+margin-left: 15rpx;
+}
+.text-wrapper{
+ margin-left: 30rpx;
+ margin-right: 30rpx; 
+ font-size: 35rpx; 
+ line-height: 49rpx;
+}
+.image-wrapper{
+text-align:center;
+}

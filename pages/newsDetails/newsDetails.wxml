@@ -7,5 +7,8 @@
 
 
 <view class="text-wrapper" wx:for="{{text}}">{{item}}</view>
-<view class="image-wrapper" wx:for="{{image}}"><image class="picture" src="{{item}}"></image></view>
+<view class="image-wrapper" wx:for="{{picturePath}}" >
+<image class="image" src="{{item}}">
+</image>
+</view>
 

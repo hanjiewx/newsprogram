@@ -6,9 +6,14 @@
 </view>
 
 
-<view class="text-wrapper" wx:for="{{text}}">{{item}}</view>
-<view class="image-wrapper" wx:for="{{picturePath}}" >
-<image class="image" src="{{item}}">
-</image>
+<view class="content" wx:if="{{content.type=='strong'}}">
+<view class="strongText">{{content}}</view>
 </view>
+<view class="content" wx:if="{{content.type=='p'}}">
+<view class="text">{{content}}</view>
+</view>
+<view class="content" wx:if="{{content.type=='image'}}">
+<image class="image" src="{{content.src}}"> </image>
+</view>
+
 

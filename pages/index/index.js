@@ -48,15 +48,11 @@ Page({
   },
 
   onTapDetails(e){
-     console.log(e)
-    for(let i=0;i<this.data.result.length;i++)
-    if (e._relatedInfo.anchorTargetText==this.data.result[i].title){
-      wx.setStorageSync('id', this.data.result[i].id)
-    }
-   
-     wx.navigateTo({
-    url: '/pages/newsDetails/newsDetails' 
-   })
+    
+   console.log(this.data.id)  
+   /*  wx.navigateTo({
+    url: '/pages/newsDetails/newsDetails?id='+this.data.id 
+   })*/
   },
 
  
@@ -76,8 +72,9 @@ Page({
 
       let newsNow = []
     for (let i = 1; i < this.data.news[titleType].length; i++) {
-          
+        
         newsNow.push({
+          id: this.data.news[titleType][i].id,
           newsText: this.data.news[titleType][i].title,
           newsPicturePath: this.data.news[titleType][i].firstImage,
           newsSource: this.data.news[titleType][i].source,
@@ -85,7 +82,8 @@ Page({
         })
       }
       this.setData({
-        newsNow: newsNow
+        newsNow: newsNow,
+        id:id
       })
 
     
@@ -126,7 +124,7 @@ Page({
           time: new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, ''),
           newsNow: newsNow
         })
-        console.log(result)
+        //console.log(result)
         this.data.news[type] = result
 
       },

@@ -26,8 +26,7 @@ Page({
 
   onPullDownRefresh(){
     this.getNews(this.data.titleType, () => { wx.stopPullDownRefresh() })
-    
-  },
+   },
 
   onTapTitle(e) {
     let titleType = titleMap[e._relatedInfo.anchorTargetText]

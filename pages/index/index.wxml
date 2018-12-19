@@ -6,7 +6,7 @@
 </view>
 </scroll-view>
 
-<view class="hotNews-wrapper" bindtap='onTapDetails'>
+<view class="hotNews-wrapper" bindtap='onTapDetails' id="{{id}}">
 <image class="hotNewsPicture" src="{{picturePath}}"></image>
 <view class="hotNewsTitle">{{hotNewsText}}</view>
 <view class="sourceAndTime-wrapper">
@@ -17,7 +17,7 @@
 
 <scroll-view scroll-y>
 <view class="newsNow" wx:for="{{newsNow}}">
-<view class="newsNow-wrapper" bindtap='onTapDetails'>
+<view class="newsNow-wrapper" bindtap='onTapDetails' id="{{item.id}}">
 <view class="newsNowTitleSourceTime">
 <view class="newsNowTitle">{{item.newsText}}</view>
 <view class="nowSourceTime-wrapper">
@@ -29,3 +29,5 @@
 </view>
 </view>
 </scroll-view>
+
+<view class="tag">热门</view>

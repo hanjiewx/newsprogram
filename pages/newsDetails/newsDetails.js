@@ -7,7 +7,7 @@ id:''
   this.setData({
     id:options.id
   })
-   console.log(options.id)
+   
   wx.request({
     url: 'https://test-miniprogram.com/api/news/detail',
     data: {
@@ -23,17 +23,15 @@ id:''
         title:title,
         time: new Date(+new Date(time) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, ''),
         source:source,
-         
+        content:content
       })
-     // console.log(res)
-      console.log(content)
-      console.log(content)
+    
+     console.log(content)
+    
     }
   })
   
 },
-//getNews(id) {
-  
-//  }
+
    
 })

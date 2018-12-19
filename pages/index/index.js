@@ -48,12 +48,13 @@ Page({
   },
 
   onTapDetails(e){
-    
-   console.log(this.data.id)  
-   /*  wx.navigateTo({
-    url: '/pages/newsDetails/newsDetails?id='+this.data.id 
-   })*/
+  console.log(e)
+  wx.navigateTo({
+    url: '/pages/newsDetails/newsDetails?id='+e.currentTarget.id
+
+   })
   },
+ 
 
  
   getFromNews(titleType) {

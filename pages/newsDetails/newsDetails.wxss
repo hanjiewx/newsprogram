@@ -13,12 +13,16 @@
 .Time{
 margin-left: 15rpx;
 }
-.text-wrapper{
- margin-left: 30rpx;
+.strongText{
+ font:bold;
+}
+.text{
+margin-left: 30rpx;
  margin-right: 30rpx; 
  font-size: 35rpx; 
  line-height: 49rpx;
 }
-.image-wrapper{
-text-align:center;
+.image{
+margin-left: 50rpx;
+text-align: center;
 }

@@ -16,6 +16,7 @@ Page({
     idx:0,
     titleType: "",
     result:[],
+    id:''
   },
 
   onLoad() {
@@ -43,17 +44,19 @@ Page({
   },
 
   onTapDetails(e){
-   wx.navigateTo({
+    wx.navigateTo({
     url: '/pages/newsDetails/newsDetails?id='+e.currentTarget.id
    })
   },
  
   getFromNews(titleType) {
+    let id = this.data.news[titleType][0].id
     let title = this.data.news[titleType][0].title
     let source = this.data.news[titleType][0].source
     let firstImage = this.data.news[titleType][0].firstImage
     let date = new Date(this.data.news[titleType][0].date).toJSON()
       this.setData({
+        id:id,
         hotNewsText: title,
         picturePath: firstImage,
         source: source,
@@ -62,7 +65,6 @@ Page({
 
       let newsNow = []
     for (let i = 1; i < this.data.news[titleType].length; i++) {
-        
         newsNow.push({
           id: this.data.news[titleType][i].id,
           newsText: this.data.news[titleType][i].title,
@@ -73,8 +75,7 @@ Page({
       }
       this.setData({
         newsNow: newsNow,
-        id:id
-      })
+       })
   },
 
  
@@ -86,6 +87,7 @@ Page({
       },
       success: res => {
         let result = res.data.result
+        let id = result[0].id
         let hotNewsText = result[0].title
         let source = result[0].source
         let picturePath = result[0].firstImage
@@ -93,6 +95,7 @@ Page({
         let newsNow = []
         for (let i = 1; i < result.length; i++) {
             newsNow.push({
+            id: result[i].id,
             newsText: result[i].title,
             newsPicturePath: result[i].firstImage,
             newsSource: result[i].source,
@@ -101,6 +104,7 @@ Page({
         }
         this.setData({
           result:result,
+          id:id,
           hotNewsText: hotNewsText,
           picturePath: picturePath,
           source: source,

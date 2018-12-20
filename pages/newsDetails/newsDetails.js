@@ -1,13 +1,13 @@
 // pages/newsDetails/newsDetails.js
 Page({
 data:{
-id:''
+ content:{},
+ id:''
 },
  onLoad:function(options){
   this.setData({
     id:options.id
-  })
-   
+    })
   wx.request({
     url: 'https://test-miniprogram.com/api/news/detail',
     data: {
@@ -25,10 +25,7 @@ id:''
         source:source,
         content:content
       })
-    
-     console.log(content)
-    
-    }
+  }
   })
   
 },

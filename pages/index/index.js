@@ -8,6 +8,7 @@ const titleMap = {
   '其他': 'other',
 }
 
+ 
 
 Page({
   data: {
@@ -16,7 +17,8 @@ Page({
     idx:0,
     titleType: "",
     result:[],
-    id:''
+    id:'',
+  
   },
 
   onLoad() {
@@ -29,7 +31,8 @@ Page({
    },
 
   onTapTitle(e) {
-    let titleType = titleMap[e._relatedInfo.anchorTargetText]
+    console.log(e)
+   let titleType = titleMap[e.currentTarget.id]
     let index = e.currentTarget.dataset.index
     if (this.data.news[titleType]) {
         this.getFromNews(titleType)

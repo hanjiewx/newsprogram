@@ -16,6 +16,7 @@ margin-left: 15rpx;
 .strongText{
  font:bold;
  margin-left: 30rpx;
+  margin-right: 30rpx; 
  font-size: 35rpx; 
  line-height: 49rpx;
 }
@@ -26,6 +27,7 @@ margin-left: 15rpx;
  line-height: 49rpx;
 }
 .image{
-margin-left: 50rpx;
+margin-left: 40rpx;
+margin-right: 40rpx;
 text-align: center;
 }

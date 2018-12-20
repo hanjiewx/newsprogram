@@ -1,14 +1,33 @@
 <scroll-view scroll-x>
 <view class="title-wrapper">
-<view class="column-item" wx:for="{{columnTitle}}" >
-<view class="{{index==idx?'_left':'left'}}" data-index="{{index}}" bindtap='onTapTitle'>{{item}}</view>
+<view class="column-item" wx:for="{{columnTitle}}" wx:key="{{index}}">
+<view class="{{index==idx?'_left':'left'}}" data-index="{{index}}" bindtap='onTapTitle' id="{{item}}">{{item}}</view>
 </view>
 </view>
 </scroll-view>
 
-<view class="hotNews-wrapper" bindtap='onTapDetails' id="{{id}}">
+<block wx:for="{{content}}">
+<view class="content" wx:if="{{item.type=='strong'}}">
+<view class="strongText">{{item.text}}</view>
+</view>
+<view class="content" wx:if="{{item.type=='p'}}">
+<view class="text">{{item.text}}</view>
+</view>
+<view class="content" wx:if="{{item.type=='image'}}">
+<image class="image" src="{{item.src}}"> </image>
+</view>
+</block>
+
+
+
+<view class="hotNews-wrapper" bindtap='onTapDetails' id="{{id}}" wx:for-index="index" data-index="{{index}}">
 <view class="tag">热门</view>
+<view wx:if="{{picturePath!=''}}">
 <image class="hotNewsPicture" src="{{picturePath}}"></image>
+</view>
+<view  wx:if="{{picturePath}}==''">
+<image class="hotNewsPicture" src="{{default}}"></image>
+</view>
 <view class="hotNewsTitle">{{hotNewsText}}</view>
 <view class="sourceAndTime-wrapper">
 <view class="source">{{source}}</view>
@@ -16,9 +35,10 @@
 </view>
 </view>
 
+
 <scroll-view scroll-y>
-<view class="newsNow" wx:for="{{newsNow}}">
-<view class="newsNow-wrapper" bindtap='onTapDetails' id="{{item.id}}">
+<view class="newsNow" wx:for="{{newsNow}}" wx:key="id" wx:for-index="index">
+<view class="newsNow-wrapper" bindtap='onTapDetails' id="{{item.id}}" data-index="{{index}}">
 <view class="newsNowTitleSourceTime">
 <view class="newsNowTitle">{{item.newsText}}</view>
 <view class="nowSourceTime-wrapper">

@@ -16,7 +16,6 @@ Page({
     idx:0,
     titleType: "",
     result:[],
-    id:''
   },
 
   onLoad() {
@@ -37,33 +36,24 @@ Page({
     else {
         this.getNews(titleType)
         }
-    
     this.setData({
       idx: index,
       titleType:titleType,
-      
     }) 
-   
   },
 
   onTapDetails(e){
-  console.log(e)
-  wx.navigateTo({
+   wx.navigateTo({
     url: '/pages/newsDetails/newsDetails?id='+e.currentTarget.id
-
    })
   },
  
-
- 
   getFromNews(titleType) {
-    let id = this.data.news[titleType][0].id
     let title = this.data.news[titleType][0].title
     let source = this.data.news[titleType][0].source
     let firstImage = this.data.news[titleType][0].firstImage
     let date = new Date(this.data.news[titleType][0].date).toJSON()
       this.setData({
-        id:id,
         hotNewsText: title,
         picturePath: firstImage,
         source: source,
@@ -85,8 +75,6 @@ Page({
         newsNow: newsNow,
         id:id
       })
-
-    
   },
 
  
@@ -98,25 +86,20 @@ Page({
       },
       success: res => {
         let result = res.data.result
-        let id = result[0].id
         let hotNewsText = result[0].title
         let source = result[0].source
         let picturePath = result[0].firstImage
         let date = new Date(result[0].date).toJSON()
         let newsNow = []
         for (let i = 1; i < result.length; i++) {
-          
-          newsNow.push({
-            id: result[i].id,
+            newsNow.push({
             newsText: result[i].title,
             newsPicturePath: result[i].firstImage,
             newsSource: result[i].source,
             newsTime: new Date(+ new Date(new Date(result[i].date).toJSON()) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
           })
         }
-
         this.setData({
-          id:id,
           result:result,
           hotNewsText: hotNewsText,
           picturePath: picturePath,
@@ -124,32 +107,12 @@ Page({
           time: new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, ''),
           newsNow: newsNow
         })
-        //console.log(result)
-        this.data.news[type] = result
-
+       this.data.news[type] = result
       },
-      
       complete: () => {
         callback && callback()
       }
     })
   },
-
-
-
-
-
-
-
-
-   getTime(time, timeResult) {
-    let dateee = new Date(timeResult).toJSON();
-    this.setData({
-      time: new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
-    })
-
-  }
-
-
 })
 

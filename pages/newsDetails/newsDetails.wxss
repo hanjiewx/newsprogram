@@ -15,9 +15,12 @@ margin-left: 15rpx;
 }
 .strongText{
  font:bold;
+ margin-left: 30rpx;
+ font-size: 35rpx; 
+ line-height: 49rpx;
 }
 .text{
-margin-left: 30rpx;
+ margin-left: 30rpx;
  margin-right: 30rpx; 
  font-size: 35rpx; 
  line-height: 49rpx;

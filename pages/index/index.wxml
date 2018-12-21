@@ -1,6 +1,6 @@
 <scroll-view scroll-x>
 <view class="title-wrapper">
-<view class="column-item" wx:for="{{columnTitle}}" wx:key="{{index}}">
+<view class="column-item" wx:for="{{columnTitle}}" wx:key="{{index}}" >
 <view class="{{index==idx?'_left':'left'}}" data-index="{{index}}" bindtap='onTapTitle' id="{{item}}">{{item}}</view>
 </view>
 </view>
@@ -20,7 +20,7 @@
 
 
 
-<view class="hotNews-wrapper" bindtap='onTapDetails' id="{{id}}" >
+<view class="hotNews-wrapper" bindtap='onTapDetails' id="{{id}}">
 <view class="tag">热门</view>
 <view wx:if="{{picturePath!=''}}">
 <image class="hotNewsPicture" src="{{picturePath}}"></image>

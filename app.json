@@ -7,7 +7,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#87ceeb",
-    "navigationBarTitleText": "",
+    "navigationBarTitleText": "新闻小程序",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   }

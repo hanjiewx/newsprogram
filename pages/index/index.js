@@ -46,9 +46,10 @@ Page({
   },
 
   onTapDetails(e){
-    wx.navigateTo({
+    console.log(e)
+    /*wx.navigateTo({
     url: '/pages/newsDetails/newsDetails?id='+e.currentTarget.id
-   })
+   })*/
   },
  
   getFromNews(titleType) {

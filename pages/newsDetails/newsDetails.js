@@ -15,6 +15,7 @@ data:{
     },
     success: res => {
       let result=res.data.result
+      let count=result.readCount
       let content=result.content
       let title=result.title
       let time = new Date(result.date).toJSON()
@@ -23,6 +24,7 @@ data:{
         title:title,
         time: new Date(+new Date(time) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, ''),
         source:source,
+        count:count,
         content:content,
       })
   }

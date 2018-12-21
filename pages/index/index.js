@@ -15,14 +15,13 @@ Page({
     columnTitle: ['国内', '国际', '财经', '娱乐', '军事', '体育', '其他'],
     news: {},
     idx:0,
-    titleType: "",
+    titleType: "gn",
     result:[],
     id:'',
   
   },
 
   onLoad() {
-    let titleType = titleMap['国内']
     this.getNews(titleMap['国内'],'')
   },
 

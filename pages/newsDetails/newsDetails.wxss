@@ -5,13 +5,17 @@
  margin-left: 30rpx;
  margin-right: 30rpx;
 }
-.SourceTime-wrapper{
+.SourceTimeCount-wrapper{
+  display:flex;
  margin-left: 30rpx;
- font-size: 25rpx;
+ font-size: 20rpx;
  line-height: 35rpx; 
 }
 .Time{
 margin-left: 15rpx;
+}
+.count{
+  margin-left:200rpx;
 }
 .strongText{
  font:bold;

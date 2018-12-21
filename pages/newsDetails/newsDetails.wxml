@@ -1,8 +1,9 @@
 <view class="title">{{title}}</view>
 
-<view class="SourceTime-wrapper">
+<view class="SourceTimeCount-wrapper">
 <view class="Source">{{source}}</view>
 <view class="Time">{{time}}</view>
+<view class="count">阅读量：{{count}}</view>
 </view>
 
 <block wx:for="{{content}}">

@@ -6,20 +6,6 @@
 </view>
 </scroll-view>
 
-<block wx:for="{{content}}" wx:key="id">
-<view class="content" wx:if="{{item.type=='strong'}}">
-<view class="strongText">{{item.text}}</view>
-</view>
-<view class="content" wx:if="{{item.type=='p'}}">
-<view class="text">{{item.text}}</view>
-</view>
-<view class="content" wx:if="{{item.type=='image'}}">
-<image class="image" src="{{item.src}}"> </image>
-</view>
-</block>
-
-
-
 <view class="hotNews-wrapper" bindtap='onTapDetails' id="{{id}}">
 <view class="tag">热门</view>
 <view wx:if="{{picturePath!=''}}">
@@ -37,8 +23,8 @@
 
 
 <scroll-view scroll-y>
-<view class="newsNow" wx:for="{{newsNow}}" wx:key="id" wx:for-index="index">
-<view class="newsNow-wrapper" bindtap='onTapDetails' id="{{item.id}}" data-index="{{index}}">
+<view class="newsNow" wx:for="{{newsNow}}" wx:key="id" >
+<view class="newsNow-wrapper" bindtap='onTapDetails' id="{{item.id}}" >
 <view class="newsNowTitleSourceTime">
 <view class="newsNowTitle">{{item.newsText}}</view>
 <view class="nowSourceTime-wrapper">

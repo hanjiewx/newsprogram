@@ -16,7 +16,8 @@
 </view>
 <view class="hotNewsTitle">{{hotNewsText}}</view>
 <view class="sourceAndTime-wrapper">
-<view class="source">{{source}}</view>
+<view wx:if="{{source!=''}}" class="source">{{source}}</view>
+<view wx:if="{{source==''}}" class="source">未知来源</view>
 <view class="time">{{time}}</view>
 </view>
 </view>
@@ -28,7 +29,8 @@
 <view class="newsNowTitleSourceTime">
 <view class="newsNowTitle">{{item.newsText}}</view>
 <view class="nowSourceTime-wrapper">
-<view class="newsNowSource">{{item.newsSource}}</view>
+<view wx:if="{{item.newsSource!=''}}" class="newsNowSource">{{item.newsSource}}</view>
+<view wx:if="{{item.newsSource==''}}" class="newsNowSource">未知来源</view>
 <view class="newsNowTime">{{item.newsTime}}</view>
 </view>
 </view>

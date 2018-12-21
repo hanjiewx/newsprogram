@@ -1,14 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
     "pages/newsDetails/newsDetails"
     ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#87ceeb",
     "navigationBarTitleText": "新闻小程序",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle": "black"
+   
   }
 }

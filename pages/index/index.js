@@ -30,7 +30,6 @@ Page({
    },
 
   onTapTitle(e) {
-    console.log(e)
    let titleType = titleMap[e.currentTarget.id]
     let index = e.currentTarget.dataset.index
     if (this.data.news[titleType]) {

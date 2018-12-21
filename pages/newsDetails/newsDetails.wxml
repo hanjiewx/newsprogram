@@ -1,7 +1,8 @@
 <view class="title">{{title}}</view>
 
 <view class="SourceTimeCount-wrapper">
-<view class="Source">{{source}}</view>
+<view wx:if="{source!=''}" class="Source">{{source}}</view>
+<view wx:if="{source==''}" class="Source">未知来源</view>
 <view class="Time">{{time}}</view>
 <view class="count">阅读量：{{count}}</view>
 </view>

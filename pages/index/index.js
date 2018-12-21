@@ -18,11 +18,11 @@ Page({
     titleType: "gn",
     result:[],
     id:'',
-  
   },
 
   onLoad() {
     this.getNews(titleMap['国内'],'')
+    
   },
 
   onPullDownRefresh(){
@@ -55,12 +55,12 @@ Page({
     let id = this.data.news[titleType][0].id
     let title = this.data.news[titleType][0].title
     let source = this.data.news[titleType][0].source
-    let firstImage = this.data.news[titleType][0].firstImage
+    let picturePath = this.data.news[titleType][0].firstImage
     let date = new Date(this.data.news[titleType][0].date).toJSON()
       this.setData({
         id:id,
         hotNewsText: title,
-        picturePath: firstImage,
+        picturePath: picturePath,
         source: source,
         time: new Date(+new Date(date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
       })
@@ -114,7 +114,7 @@ Page({
           newsNow: newsNow
         })
        this.data.news[type] = result
-      },
+             },
       complete: () => {
         callback && callback()
       }

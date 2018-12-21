@@ -25,8 +25,8 @@
 <view wx:if="{{picturePath!=''}}">
 <image class="hotNewsPicture" src="{{picturePath}}"></image>
 </view>
-<view  wx:if="{{picturePath}}==''">
-<image class="hotNewsPicture" src="{{default}}"></image>
+<view  wx:if="{{picturePath==''}}">
+<image class="hotNewsPicture" src='/image/default.png'></image>
 </view>
 <view class="hotNewsTitle">{{hotNewsText}}</view>
 <view class="sourceAndTime-wrapper">
@@ -46,7 +46,10 @@
 <view class="newsNowTime">{{item.newsTime}}</view>
 </view>
 </view>
-<image class="newsNowPicture" src="{{item.newsPicturePath}}"></image>
+<view wx:if="{{item.newsPicturePath!=''}}">
+<image class="newsNowPicture" src="{{item.newsPicturePath}}"></image></view>
+<view wx:if="{{item.newsPicturePath==''}}">
+<image class="newsNowPicture" src="/image/default.png"></image></view>
 </view>
 </view>
 </scroll-view>

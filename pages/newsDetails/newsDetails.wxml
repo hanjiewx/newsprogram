@@ -6,8 +6,8 @@
 <view class="count">阅读量：{{count}}</view>
 </view>
 
-<block wx:for="{{content}}">
-<view class="content" wx:if="{{item.type=='strong'}}">
+<block wx:for="{{content}}" wx:key="id">
+<view class="content" wx:if="{{item.type=='strong'}}" >
 <view class="strongText">{{item.text}}</view>
 </view>
 <view class="content" wx:if="{{item.type=='p'}}">

@@ -6,7 +6,7 @@
 </view>
 </scroll-view>
 
-<block wx:for="{{content}}">
+<block wx:for="{{content}}" wx:key="id">
 <view class="content" wx:if="{{item.type=='strong'}}">
 <view class="strongText">{{item.text}}</view>
 </view>
@@ -20,7 +20,7 @@
 
 
 
-<view class="hotNews-wrapper" bindtap='onTapDetails' id="{{id}}" wx:for-index="index" data-index="{{index}}">
+<view class="hotNews-wrapper" bindtap='onTapDetails' id="{{id}}" >
 <view class="tag">热门</view>
 <view wx:if="{{picturePath!=''}}">
 <image class="hotNewsPicture" src="{{picturePath}}"></image>
